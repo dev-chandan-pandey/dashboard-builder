@@ -4,27 +4,47 @@ import {
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
 } from "chart.js";
 
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  LineElement
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
 );
 
-export default function ChartWidget() {
+export default function ChartWidget({
+  widget,
+}) {
   const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr"],
+    labels: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+    ],
     datasets: [
       {
-        label: "Sales",
-        data: [10, 25, 18, 40],
+        label: "Revenue",
+        data: widget.data,
       },
     ],
   };
 
-  return <Line data={data} />;
+  return widget.chartType === "bar" ? (
+    <Bar data={data} />
+  ) : (
+    <Line data={data} />
+  );
 }

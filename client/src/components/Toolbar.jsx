@@ -1,7 +1,17 @@
+import {
+  FaFont,
+  FaChartBar,
+  FaImage,
+  FaSave,
+  FaDownload,
+} from "react-icons/fa";
+
 export default function Toolbar({
   addTextWidget,
   addChartWidget,
   addImageWidget,
+  saveDashboard,
+  loadDashboard,
 }) {
   return (
     <div
@@ -12,15 +22,23 @@ export default function Toolbar({
       }}
     >
       <button onClick={addTextWidget}>
-        Add Text
+        <FaFont /> Text
       </button>
 
       <button onClick={addChartWidget}>
-        Add Chart
+        <FaChartBar /> Chart
       </button>
 
       <button onClick={addImageWidget}>
-        Add Image
+        <FaImage /> Image
+      </button>
+
+      <button onClick={saveDashboard}>
+        <FaSave /> Save
+      </button>
+
+      <button onClick={loadDashboard}>
+        <FaDownload /> Load
       </button>
     </div>
   );

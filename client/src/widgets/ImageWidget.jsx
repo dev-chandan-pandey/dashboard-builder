@@ -8,29 +8,48 @@ export default function ImageWidget({
 
     if (!file) return;
 
-    const image = URL.createObjectURL(file);
+    // Optional: reject large images
+    if (file.size > 1024 * 1024) {
+      alert(
+        "Please upload an image smaller than 1MB."
+      );
+      return;
+    }
 
-    const updated = widgets.map((item) =>
-      item.i === widget.i
-        ? { ...item, image }
-        : item
-    );
+    const reader = new FileReader();
 
-    setWidgets(updated);
+    reader.onloadend = () => {
+      const updated = widgets.map((item) =>
+        item.i === widget.i
+          ? {
+              ...item,
+              image: reader.result,
+            }
+          : item
+      );
+
+      setWidgets(updated);
+    };
+
+    reader.readAsDataURL(file);
   };
 
   return (
     <>
       <input
         type="file"
+        accept="image/*"
         onChange={handleChange}
       />
 
       {widget.image && (
         <img
           src={widget.image}
-          width="100%"
           alt=""
+          style={{
+            width: "100%",
+            marginTop: "10px",
+          }}
         />
       )}
     </>

@@ -4,10 +4,21 @@ exports.saveDashboard = async (req, res) => {
   try {
     const { name, layout } = req.body;
 
-    await db.execute(
-      "INSERT INTO dashboards (name, layout_json) VALUES (?, ?)",
-      [name, JSON.stringify(layout)]
-    );
+    // await db.execute(
+    //   "INSERT INTO dashboards (name, layout_json) VALUES (?, ?)",
+    //   [name, JSON.stringify(layout)]
+    // );
+    await db.execute({
+  sql: `
+    INSERT INTO dashboards
+    (name, layout_json)
+    VALUES (?, ?)
+  `,
+  args: [
+    name,
+    JSON.stringify(layout),
+  ],
+});
 
     res.status(201).json({
       success: true,

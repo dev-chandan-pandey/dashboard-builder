@@ -6,13 +6,14 @@ import {
 import TextWidget from "../widgets/TextWidget";
 import ChartWidget from "../widgets/ChartWidget";
 import ImageWidget from "../widgets/ImageWidget";
-
+import { ToastContainer, toast }from "react-toastify";
 const ResponsiveGridLayout =
   WidthProvider(Responsive);
 
 export default function DashboardCanvas({
   widgets,
   setWidgets,
+  deleteWidget
 }) {
   const layout = widgets.map((widget) => ({
     i: widget.i,
@@ -47,6 +48,13 @@ export default function DashboardCanvas({
       draggableHandle=".widget-header"
       draggableCancel=".ql-editor"
     >
+      {widgets.length === 0 && (
+        <h2>
+          Add widgets to start building
+          your dashboard.
+        </h2>
+      )}
+  
       {widgets.map((widget) => (
         <div key={widget.i}>
           <div
@@ -62,13 +70,16 @@ export default function DashboardCanvas({
             <div
               className="widget-header"
               style={{
+                display: "flex",
+                justifyContent: "space-between",
                 padding: "10px",
                 background: "#eee",
                 cursor: "move",
                 fontWeight: "bold",
               }}
             >
-              Drag Here
+              <span>Drag Here</span>
+              <button onClick={() => deleteWidget(widget.i)}>X</button>
             </div>
 
             <div style={{ padding: "10px" }}>
@@ -81,7 +92,7 @@ export default function DashboardCanvas({
               )}
 
               {widget.type === "chart" && (
-                <ChartWidget />
+                <ChartWidget widget={widget} />
               )}
 
               {widget.type === "image" && (
