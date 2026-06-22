@@ -1,45 +1,25 @@
-import {
-  FaFont,
-  FaChartBar,
-  FaImage,
-  FaSave,
-  FaDownload,
-} from "react-icons/fa";
+import { FiType, FiBarChart2, FiImage, FiSave, FiDownload } from "react-icons/fi";
+import "../styles/Toolbar.css"; // Create or add this directly to your CSS styles folder
 
-export default function Toolbar({
-  addTextWidget,
-  addChartWidget,
-  addImageWidget,
-  saveDashboard,
-  loadDashboard,
-}) {
+function Toolbar({ addTextWidget, addChartWidget, addImageWidget, saveDashboard, loadDashboard }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: "10px",
-        marginBottom: "20px",
-      }}
-    >
-      <button onClick={addTextWidget}>
-        <FaFont /> Text
-      </button>
+    <div className="toolbar-wrapper">
+      <div className="toolbar-section">
+        <span className="section-label">Add Elements</span>
+        <button className="btn-tool" onClick={addTextWidget}><FiType /> Text Block</button>
+        <button className="btn-tool" onClick={addChartWidget}><FiBarChart2 /> Analytics Chart</button>
+        <button className="btn-tool" onClick={addImageWidget}><FiImage /> Image Container</button>
+      </div>
 
-      <button onClick={addChartWidget}>
-        <FaChartBar /> Chart
-      </button>
+      <hr className="toolbar-divider" />
 
-      <button onClick={addImageWidget}>
-        <FaImage /> Image
-      </button>
-
-      <button onClick={saveDashboard}>
-        <FaSave /> Save
-      </button>
-
-      <button onClick={loadDashboard}>
-        <FaDownload /> Load
-      </button>
+      <div className="toolbar-section">
+        <span className="section-label">Actions</span>
+        <button className="btn-action save" onClick={saveDashboard}><FiSave /> Save Structure</button>
+        <button className="btn-action load" onClick={loadDashboard}><FiDownload /> Sync Cloud Data</button>
+      </div>
     </div>
   );
 }
+
+export default Toolbar;

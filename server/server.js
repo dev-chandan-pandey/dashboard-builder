@@ -1,20 +1,29 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-
+const path = require("path");
 const initializeDatabase = require("./config/initDB");
 const dashboardRoutes = require("./routes/dashboardRoutes");
-
+const uploadRoutes = require("./routes/uploadRoutes");
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json({
   limit: "20mb",
 }));
-
+app.use(
+  "/uploads",
+  express.static(
+    path.join(__dirname, "uploads")
+  )
+);
+app.use("/api/upload", uploadRoutes);
 app.use(express.urlencoded({
-  extended: true,
-  limit: "20mb",
+  extended: true
 }));
 
 app.use("/api/dashboard", dashboardRoutes);

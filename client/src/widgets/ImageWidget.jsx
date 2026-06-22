@@ -1,37 +1,38 @@
+import axios from "axios";
+
 export default function ImageWidget({
   widget,
   widgets,
   setWidgets,
 }) {
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const file = e.target.files[0];
 
     if (!file) return;
 
-    // Optional: reject large images
-    if (file.size > 1024 * 1024) {
-      alert(
-        "Please upload an image smaller than 1MB."
+    const formData = new FormData();
+
+    formData.append("image", file);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/upload",
+        formData
       );
-      return;
-    }
 
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
       const updated = widgets.map((item) =>
         item.i === widget.i
           ? {
               ...item,
-              image: reader.result,
+              image: response.data.imageUrl,
             }
           : item
       );
 
       setWidgets(updated);
-    };
-
-    reader.readAsDataURL(file);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
