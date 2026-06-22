@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS dashboards (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    layout_json TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
