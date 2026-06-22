@@ -1,21 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg-main: #0b0f19;          /* Deep space/midnight canvas */
-  --bg-sidebar: #111827;       /* Dark obsidian sidebar */
-  --bg-card: #1f2937;          /* Sleek charcoal card elements */
-  --bg-card-header: #374151;   /* Contrasting title headers */
-  --text-primary: #f9fafb;     /* High contrast crispy white */
-  --text-muted: #9ca3af;       /* Soft glowing slate for secondary text */
-  --accent-primary: #6366f1;   /* Electric Indigo */
-  --accent-secondary: #06b6d4; /* Neon Cyan */
-  --accent-danger: #ef4444;    /* Crimson for close buttons */
-  --border-color: #1f2937;
+  /* Premium Dark Space Palette */
+  --bg-main: #030712;            /* Absolute pitch obsidian black */
+  --bg-sidebar: #090d16;         /* Ultra-deep space blue-black */
+  --bg-card: #111827;            /* Solid dark carbon gray card base */
+  --bg-card-header: #0b0f19;     /* Deep contrast container title strip */
+  
+  /* Vibrant Cyber Neon Accents */
+  --neon-indigo: #6366f1;        /* Electric Indigo */
+  --neon-cyan: #06b6d4;          /* Aurora Cyan */
+  --neon-pink: #ec4899;          /* Cyber Hot Pink */
+  
+  /* Text and Borders */
+  --text-primary: #f8fafc;       /* Crisp frosty white */
+  --text-muted: #94a3b8;         /* Sophisticated soft blue-gray */
+  --border-glow: rgba(255, 255, 255, 0.05); /* Hairline edge definition */
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--bg-main);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
@@ -28,42 +33,544 @@ body {
   background: var(--bg-main);
 }
 
-/* Sidebar Overhaul */
+/* Sidebar Overhaul - Pure Glassmorphic Depth */
 .sidebar {
-  width: 280px;
+  width: 290px;
   background: var(--bg-sidebar);
-  border-right: 1px solid #1e293b;
-  padding: 24px;
+  border-right: 1px solid var(--border-glow);
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+  gap: 36px;
+  box-shadow: 15px 0 50px rgba(0, 0, 0, 0.6);
   z-index: 10;
 }
 
 .sidebar-brand h1 {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #a78bfa, #6366f1);
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #a78bfa, var(--neon-cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
+}
+.sidebar-section-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #4b5563;
+  margin-bottom: 14px;
+}
+
+/* ==========================================================================
+   INTERACTIVE BUTTONS & SIDEBAR ELEMENTS
+   ========================================================================== */
+
+/* Glass Panel Element Insertion Cards */
+.btn-tool {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.03);
+}
+
+.btn-tool:hover {
+  background: rgba(99, 102, 241, 0.06) !important;
+  border-color: rgba(99, 102, 241, 0.35) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Vibrant CTA Action Control Strip Buttons */
+.btn-action.save {
+  background: linear-gradient(135deg, var(--neon-indigo), #4f46e5) !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-action.save:hover {
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.5);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.btn-action.load {
+  background: rgba(6, 182, 212, 0.03) !important;
+  color: #22d3ee !important;
+  border: 1px solid rgba(6, 182, 212, 0.25) !important;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-action.load:hover {
+  background: rgba(6, 182, 212, 0.08) !important;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+  border-color: var(--neon-cyan) !important;
+  transform: translateY(-2px);
+}
+/* Main Canvas Backdrop Matrix Layout */
+.main-workspace {
+  flex-grow: 1;
+  padding: 48px;
+  overflow-y: auto;
+  max-height: 100vh;
+  background-color: var(--bg-main);
+  /* Digital structural alignment grid overlay effect */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ==========================================================================
+   CANVAS CORE ELEMENTS & LAYOUT CARDS
+   ========================================================================== */
+
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.custom-grid-canvas {
+  position: relative;
+  width: 100%;
+}
+
+.grid-item-container {
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+/* Premium Component Structural Modules */
+.widget-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.widget-card:hover {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+/* Visual response during drag alignment updates */
+.active-dragging .widget-card {
+  border-color: rgba(6, 182, 212, 0.5) !important;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 30px rgba(6, 182, 212, 0.25) !important;
+}
+
+/* Diagonal Micro Resizing Handle Target Anchor */
+.custom-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: se-resize;
+  background: linear-gradient(135deg, transparent 60%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.15) 70%, transparent 70%, transparent 80%, rgba(255, 255, 255, 0.15) 80%);
+  border-bottom-right-radius: 20px;
+  z-index: 10;
+}
+
+.custom-resize-handle:hover {
+  background: linear-gradient(135deg, transparent 40%, var(--neon-cyan) 40%);
+}
+
+/* Premium Component Strip Header */
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: var(--bg-card-header);
+  border-bottom: 1px solid var(--border-glow);
+  cursor: grab;
+}
+
+.widget-header:active {
+  cursor: grabbing;
+}
+
+.widget-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.drag-handle-wrapper {
+  color: #374151;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.widget-header:hover .drag-handle-wrapper {
+  color: var(--neon-cyan);
+}
+/* Glowing Typography Context Status Badges */
+.widget-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  border-radius: 8px;
+}
+
+.badge-text {
+  background: rgba(99, 102, 241, 0.08);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.18);
+}
+
+.badge-chart {
+  background: rgba(6, 182, 212, 0.08);
+  color: #22d3ee;
+  border: 1px solid rgba(6, 182, 212, 0.18);
+}
+
+.badge-image {
+  background: rgba(236, 72, 153, 0.08);
+  color: #f472b6;
+  border: 1px solid rgba(236, 72, 153, 0.18);
+}
+
+/* Panel Frame Clean Close Action Trigger */
+.widget-delete-btn {
+  background: transparent;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.widget-delete-btn:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+}
+
+/* Core Internal Content Slot Area */
+.widget-body {
+  padding: 20px;
+  flex-grow: 1;
+  overflow: auto;
+  color: #e2e8f0;
+}
+/* ==========================================================================
+   WIDGET INTERIOR SUB-COMPONENTS
+   ========================================================================== */
+
+/* Rich Editor Workspace Contexts */
+.text-editor-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.custom-editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-glow);
+  border-radius: 10px;
+}
+
+.toolbar-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 700;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.toolbar-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 14px;
+  background: var(--border-glow);
+  margin: 0 4px;
+}
+
+.premium-textarea {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  resize: none;
+  color: #e2e8f0;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  outline: none;
+}
+
+/* Custom Vector Visualizers */
+.premium-chart-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  gap: 18px;
+  padding: 14px 6px 0;
+}
+
+.bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.bar-track {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.015);
+  border-radius: 8px;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.bar-fill {
+  width: 100%;
+  background: linear-gradient(180deg, var(--neon-indigo), #3b82f6);
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bar-fill:hover {
+  background: linear-gradient(180deg, var(--neon-cyan), #0891b2);
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.4);
+}
+
+.bar-glow-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent);
+  border-radius: 8px;
+}
+
+.bar-label, .line-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.custom-line-chart {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 14px;
+}
+
+.line-chart-svg {
+  flex-grow: 1;
+  width: 100%;
+  overflow: visible;
+}
+
+.chart-labels-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px 0;
+}
+
+/* Custom Interactive Upload Modules */
+.premium-image-widget {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.cloud-icon-wrapper {
+  color: var(--neon-indigo);
+  background: rgba(99, 102, 241, 0.08);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 24px rgba(99, 102, 241, 0.12);
+}
+
+.image-upload-placeholder h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.image-upload-placeholder p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0 0 2px 0;
+}
+
+.file-upload-btn {
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-glow);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.file-upload-btn:hover {
+  background: var(--neon-indigo);
+  border-color: var(--neon-indigo);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.35);
+}
+
+.uploaded-image-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.uploaded-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Blank Blueprint Default Display illustration */
+.empty-canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 24px;
+  background: rgba(17, 24, 39, 0.2);
+  border: 2px dashed rgba(255, 255, 255, 0.03);
+  border-radius: 24px;
+}
+
+.empty-icon-glow {
+  color: var(--neon-indigo);
+  background: rgba(99, 102, 241, 0.06);
+  padding: 22px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
+}
+
+.empty-canvas h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
   letter-spacing: -0.02em;
 }
 
-/* Main Canvas Background Grid (Subtle cyber pattern) */
-.main-workspace {
-  flex-grow: 1;
-  padding: 40px;
-  overflow-y: auto;
-  max-height: 100vh;
-  background-image: 
-    radial-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 0),
-    radial-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 0);
-  background-size: 24px 24px;
-  background-position: 0 0, 12px 12px;
+.empty-canvas p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 440px;
+  line-height: 1.65;
+  margin: 0;
 }
 
+/* Native Micro Scrollbars for Widget Bodies */
+.widget-body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.widget-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.widget-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+}
+.widget-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
 /* High-Tech Widget Cards */
 .react-grid-item {
   background: var(--bg-card) !important;
@@ -264,7 +771,115 @@ body {
 .widget-body-content::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.15);
 }
+/* Toolbar Section Overhaul */
+.section-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
 
+/* Glassmorphic Side Buttons */
+.btn-tool {
+  background: rgba(255, 255, 255, 0.03);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.btn-tool:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: var(--accent-primary);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.2);
+}
+
+/* Glowing Neon Save Button */
+.btn-action.save {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-action.save:hover {
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Transparent Outline Sync Button */
+.btn-action.load {
+  background: transparent;
+  color: var(--accent-secondary);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-action.load:hover {
+  background: rgba(6, 182, 212, 0.08);
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+}
+
+/* Widget Header "Drag Here" fixes */
+/* Target the headers inside your DashboardCanvas components */
+.widget-header {
+  background: var(--bg-card-header) !important;
+  color: var(--text-primary) !important;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.widget-delete-btn {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: var(--accent-danger) !important;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+  border-radius: 6px;
+  padding: 2px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.widget-delete-btn:hover {
+  background: var(--accent-danger) !important;
+  color: white !important;
+}
+
+/* Text editor formatting bars & components dark overrides */
+.ql-toolbar.ql-snow {
+  background: #2d3748 !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+.ql-container.ql-snow {
+  border: none !important;
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
 
 
 
