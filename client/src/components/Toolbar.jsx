@@ -1,3 +1,4 @@
+import React from "react";
 import { FiType, FiBarChart2, FiImage, FiSave, FiDownload } from "react-icons/fi";
 import "../styles/Toolbar.css"; // Create or add this directly to your CSS styles folder
 

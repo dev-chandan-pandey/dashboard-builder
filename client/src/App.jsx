@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import DashboardCanvas from "./components/DashboardCanvas";
 import Toolbar from "./components/Toolbar";
 import API from "./services/api";

@@ -1,3 +1,4 @@
+import React from "react";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import { FiMove, FiTrash2, FiFileText, FiBarChart2, FiImage, FiGrid } from "react-icons/fi";
 import TextWidget from "../widgets/TextWidget";
