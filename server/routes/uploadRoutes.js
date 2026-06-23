@@ -10,7 +10,7 @@ router.post(
   (req, res) => {
     res.json({
       imageUrl:
-        "http://localhost:5000/uploads/" +
+        "https://dashboard-builder-6jxk.onrender.com/uploads/" +
         req.file.filename,
     });
   }

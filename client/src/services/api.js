@@ -7,7 +7,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api/dashboard",
+  baseURL: "https://dashboard-builder-6jxk.onrender.com/api/dashboard",
 });
 
 export default API;

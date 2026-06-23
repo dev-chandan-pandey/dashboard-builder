@@ -16,7 +16,7 @@ export default function ImageWidget({
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/upload",
+        "https://dashboard-builder-6jxk.onrender.com/api/upload",
         formData
       );
 

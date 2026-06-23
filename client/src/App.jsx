@@ -36,7 +36,7 @@ function App() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/upload/${filename}`
+        `https://dashboard-builder-6jxk.onrender.com/api/upload/${filename}`
       );
     } catch (error) {
       console.error(error);
